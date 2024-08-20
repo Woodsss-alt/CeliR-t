@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Stunden Countdown</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #282c34;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        #countdown {
+            font-size: 50px;
+            text-align: center;
+        }
+        #message {
+            font-size: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="countdown"></div>
+<div id="message"></div>
+
+<script>
+    // Setze den Countdown auf 5 Stunden ab jetzt
+    var countDownDate = new Date().getTime() + 5 * 60 * 60 * 1000;
+
+    // Aktualisiere den Countdown jede Sekunde
+    var x = setInterval(function() {
+
+        // Finde das aktuelle Datum und die aktuelle Uhrzeit
+        var now = new Date().getTime();
+
+        // Berechne die Differenz zwischen jetzt und dem Zielzeitpunkt
+        var distance = countDownDate - now;
+
+        // Berechne die Zeit in Stunden, Minuten und Sekunden
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Ausgabe im Element mit der ID "countdown"
+        document.getElementById("countdown").innerHTML = hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // Wenn der Countdown abgelaufen ist, schreibe die Nachricht
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "";
+            document.getElementById("message").innerHTML = "Glh Nlvwh lp Vdqgndvwhq<br>Gaius Iulius CAESAR der Lümmel,<br>VERSCHLÜSSELTE gern DREI Nachrichten.";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
